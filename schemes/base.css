@@ -1,0 +1,246 @@
+/* Global CSS styles across every theme */
+
+
+/* Set up global font  */
+body,.table,.font,.fonth,div.lastpost:first-line{
+	font: 13px verdana, geneva, sans-serif;
+}
+
+/* Make images upscale crispy */
+* {
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -o-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+	-ms-interpolation-mode:nearest-neighbor;
+}
+
+/* Make all links bold and not underlined by default */
+a:link,a:visited,a:active,a:hover{text-decoration:none;font-weight:bold;}
+
+/* Mostly legacy thing from when IE had a blue border around link images */
+img { border:none; }
+
+
+
+/* Shorthand alignment styles */
+.left      { text-align:left }
+.center	{ text-align:center }
+.right	{ text-align:right }
+.vatop    { vertical-align:top }
+
+/* Miscellaneous common attributes */
+.w,.table { width:100% }
+.b		   { font-weight:bold !important }
+.i		   { font-style:italic !important }
+
+/* Make sure the last post text only stays in two lines*/
+.nobr,div.lastpost {white-space:nowrap}
+
+/* Small font setup */
+.fonts,.fontt,div.lastpost{font-size:10px !important}
+
+/* Used to display buttons with the look of a link */
+.buttonlink {
+	border:      none !important;
+	font-weight: bold !important;
+	padding:     0px;
+	font-size:   10px !important;
+}
+.buttonlink:hover {
+	cursor: pointer;
+}
+
+/* ? */
+.sparkline { display: none; }
+
+/* Make code blocks slightly less likely to go haywire, since apparently
+   "don't stretch the entire gat dang page" is not possible in HTML, lol */
+.code pre {
+	max-width: 100%;
+	width: 100%;
+	overflow-x: auto;
+	white-space: pre-wrap;
+}
+/* "Fix" for auto-generated <br> tags in <pre> blocks */
+pre br { display: none; }
+
+/* Make radio buttons look not terrible */
+input[type=radio] { 
+	color: black; 
+	background: white;
+	border: none;
+}
+
+/* Get rid of the horrible spacing between cells */
+.table {empty-cells:show;border-spacing: 0px;}
+
+/* Spoiler tag code */
+.pstspl1 {opacity:0;}
+.pstspl1:hover {opacity:1;}
+.pstspl2 {background:#000;color:#FFF;display:block;}
+
+/* Stop avatars from being huge */
+.avatar	{
+	max-width:	200px;
+}
+
+/* On mobile, make avatars smaller */
+.mobile-avatar {
+	float:	left;
+	height:	50px;
+	width:	50px;
+	padding: 2px;
+	text-align:	center;
+}
+.mobile-avatar > .avatar, .rpg-avatar > .avatar {
+	max-height:	100%;
+	max-width:	100%;
+}
+
+/* Prevent huge thread icons from breaking the layout */
+.thread-icon-td {
+	width:	40px;
+}
+.thread-icon {
+	max-width:		60px; 
+	max-height:		30px; 
+	overflow:		hidden;
+}
+
+
+/* Attachments */
+.attachment-box, .attachment-box-addnew{
+	float: left;
+	margin-right: 2px;
+	margin-bottom: 2px;
+}
+.attachment-box{
+	width: 300px;
+	height: 100px;
+}
+.attachment-box-addnew {
+	width: 100px;
+	height: 100px;
+	text-align: center;
+}
+.attachment-box-thumb {
+	width: 100px; 
+	height: 80px; 
+	text-align: center;
+}
+.attachment-box-text {
+	vertical-align: top;
+	height: 50px;
+}
+.attachment-box-controls {
+	vertical-align: bottom;
+	height: 100%;
+}
+
+/* Post ratings */
+.rating-container {	width: 100%; }
+.icon-rating { opacity: 0.5 }
+.icon-rating:hover,.icon-rated { opacity: 1 }
+/* Hide text to attempt preserving screen space */
+@media(max-width: 800px) {
+	.text-rating { display: none; }
+}
+
+/* Post toolbar */
+.toolbar-popup, .toolbar-button:hover, .toolbar-popup td:hover {
+	background: rgba(255,255,255,0.35);
+}
+/*.toolbar-button:hover, .toolbar-popup td:hover {
+	border: 1px solid #fff;
+	padding: 0px;
+}*/
+.toolbar {
+	z-index: 1;
+	background: rgba(200, 200, 128, 0.75);
+}
+.toolbar-sep {
+	border-right: 1px solid rgba(255,255,255,0.50);
+}
+.toolbar-button {
+	height: 15px;
+	width: 25px;
+	text-align: center;
+}
+.toolbar-popup {
+	width: auto !important;
+	position: absolute; 
+	z-index: 2;
+	text-align: center;
+}
+
+/* New click-based spoiler tag */
+.spoiler-label:after {
+	content: 'Spoiler';
+	color: white;
+	background: black;
+	font-style: italic;
+	font-weight: bold;
+	margin: 0 .2em;
+	padding: 0.1em 0.4em;
+	font-size: 80%;
+	vertical-align: 10%;
+}
+.spoiler > input[type="checkbox"] {
+	display: none;
+}
+.spoiler > .hidden {
+	background: rgba(128, 128, 128, .5);
+}
+.spoiler > input[type="checkbox"]:checked + .hidden {
+	background: unset;
+}
+.spoiler-b > .spoiler-label:after {
+	width: 100%;
+	display: block;
+	margin: 0;
+	vertical-align: unset;
+	padding: 0.25em 1em;
+	box-sizing: border-box;
+	content: 'Spoiler content - click to show/hide';
+}
+.spoiler-label:hover:after { 
+	background: #444;
+}
+.spoiler-label:hover + input[type="checkbox"]:checked ~ .hidden {
+	background: rgba(128, 128, 128, .5);
+}
+.spoiler > .hidden > * {
+	visibility: hidden;
+}
+.spoiler > input[type="checkbox"]:checked + .hidden > * {
+	visibility: visible;
+}
+
+/* */
+.imgtag { max-width: 100%; }
+.post { position: relative; }
+
+/* Mostly for use within the newreply / newthread form */
+textarea.newposttextbox {
+	 max-width: 100%;
+	 width: 800px;
+	 height: 20em;
+	 resize: both;
+}
+table.table-fixed {
+	table-layout: fixed;
+}
+input, select { vertical-align: middle; }
+img[src^="images/smilies/"] { vertical-align: middle; }
+
+/* Ikachan cursor (disabled) */
+/*			
+body {
+	cursor:	url('images/ikachanpointer.png'), default;
+}
+a:link {
+	cursor:	url('images/ikachanpointer2.png'), pointer;
+}
+*/
