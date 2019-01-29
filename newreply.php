@@ -88,9 +88,9 @@
 				$reply_error .= "You didn't enter anything in the post.<br>";
 			if ($user['lastposttime'] > (ctime()-4))
 				$reply_error .= "You are posting too fast.<br>";
-			if ($thread['lastposter'] == $userid && $thread['lastpostdate']>=time()-43200 && $loguser['powerlevel']<2)
+			if ($thread['lastposter'] == $userid && $thread['lastpostdate']>=time()-43200 && !$ismod)
 				$reply_error .= "You can't double post until at least 12 hours after the original post you made.<br>";
-			if ($thread['lastposter'] == $userid && $thread['lastpostdate']>=time()-3600 && $loguser['powerlevel']>1)
+			if ($thread['lastposter'] == $userid && $thread['lastpostdate']>=time()-3600 && $ismod)
 				$reply_error .= "You can't double post until at least 1 hour after the original post you made.<br>";
 			// TODO: add ninjas
 		}
