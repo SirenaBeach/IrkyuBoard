@@ -59,12 +59,14 @@
 		case 'n': $qwhere[] = '(sex=2)'; break;
 	}
 	if ($_GET['pow']) {
-		if (($_GET['pow'] == 1 || $_GET['pow'] == 0) && $loguser['powerlevel'] < $config['view-super-minpower'])
-			$sqlpower = "IN (0, 1)";
-		elseif ($_GET['pow'] == 3 || $_GET['pow'] == 4) // merge admin + sysadmin (they appear the same)
-			$sqlpower = "IN (3, 4)";
-		elseif ($_GET['pow'] == -1 || $_GET['pow'] == -2) // merge banned + permabanned
-			$sqlpower = "IN (-1, -2)";
+		if (($_GET['pow'] == 2 || $_GET['pow'] == 1 || $_GET['pow'] == 0) && $loguser['powerlevel'] < $config['view-super-minpower'])
+			$sqlpower = "IN (0, 1, 2)";
+		elseif (($_GET['pow'] == 2 || $_GET['pow'] == 1) && !$isfullmod && $loguser['powerlevel'] >= $config['view-super-minpower'])
+			$sqlpower = "IN (1, 2)";
+		elseif ($_GET['pow'] == 4 || $_GET['pow'] == 5) // merge admin + sysadmin (they appear the same)
+			$sqlpower = "IN (4, 5)";
+		elseif ($_GET['pow'] == -1 || $_GET['pow'] == -2 || $_GET['pow'] == -3) // merge banned + permabanned
+			$sqlpower = "IN (-1, -2, -3)";
 		else
 			$sqlpower = "= '{$_GET['pow']}'";
 
