@@ -55,10 +55,12 @@
 	const MODE_ANNOUNCEMENT = 2;
 	
 	$pwlnames = array(
+		'-3'=>'Blocked',
 		'-2'=>'Permabanned',
 		'-1'=>'Banned', 
 		'Normal', 
 		'Normal +',
+		'Normal + NSFW',
 		'Moderator', 
 		'Administrator',
 		'Sysadmin'
