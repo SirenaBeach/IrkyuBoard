@@ -246,7 +246,7 @@
 		do404();
 	}
 
-	if ($x_hacks['superadmin']) $loguser['powerlevel'] = 4;
+	if ($x_hacks['superadmin']) $loguser['powerlevel'] == 4;
 	
 	register_shutdown_function('error_printer', false, ($loguser['powerlevel'] == 4), $GLOBALS['errors']);
 	
@@ -254,7 +254,8 @@
 	if (file_exists("lib/hacks.php")) {
 		require "lib/hacks.php";
 	}
-	
+
+	$blocked   = (int) ($loguser['powerlevel'] ==  -3);	
 	$banned    = (int) ($loguser['powerlevel'] <  0);
 	$issuper   = (int) ($loguser['powerlevel'] >= 1);
 	$ismod     = (int) ($loguser['powerlevel'] >= 2);
@@ -483,6 +484,11 @@
 		
 		echo dialog($message, "Tor is not allowed", $config['board-name']);
 	}
+	if ($blocked) {
+		$message =	"You have been blocked from the board. Go away.";
+			
+		echo dialog($message, "Go away", $config['board-name']);
+	}	
 	
 	/*
 		View milestones
