@@ -731,7 +731,7 @@ piwikTracker.enableLinkTracking();
 		</table>";
 		
 	// Print errors locally
-	print error_printer(true, ($loguser['powerlevel'] == 4 || $config['always-show-debug']), $GLOBALS['errors']);
+	print error_printer(true, ($loguser['powerlevel'] == 5 || $config['always-show-debug']), $GLOBALS['errors']);
 
 	// Print mysql queries
 	if (mysql::$debug_on && in_array($_SERVER['REMOTE_ADDR'], $sqldebuggers) || $loguser['id'] == 1 || $config['always-show-debug']) {
