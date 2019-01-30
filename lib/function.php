@@ -190,7 +190,7 @@
 			foreach($itemdb as $item) {
 				switch ($item['effect']) {
 					// New HTML comment display enable
-					case 5: $hacks['comments'] = true; break;
+					case 8: $hacks['comments'] = true; break;
 				}
 			}
 		}
@@ -246,9 +246,9 @@
 		do404();
 	}
 
-	if ($x_hacks['superadmin']) $loguser['powerlevel'] == 4;
+	if ($x_hacks['superadmin']) $loguser['powerlevel'] == 5;
 	
-	register_shutdown_function('error_printer', false, ($loguser['powerlevel'] == 4), $GLOBALS['errors']);
+	register_shutdown_function('error_printer', false, ($loguser['powerlevel'] == 5), $GLOBALS['errors']);
 	
 	// Support for stupid shit
 	if (file_exists("lib/hacks.php")) {
@@ -258,9 +258,10 @@
 	$blocked   = (int) ($loguser['powerlevel'] ==  -3);	
 	$banned    = (int) ($loguser['powerlevel'] <  0);
 	$issuper   = (int) ($loguser['powerlevel'] >= 1);
-	$ismod     = (int) ($loguser['powerlevel'] >= 2);
-	$isadmin   = (int) ($loguser['powerlevel'] >= 3);
-	$sysadmin  = (int) ($loguser['powerlevel'] >= 4);
+	$isnsfw    = (int) ($loguser['powerlevel'] >= 2);
+	$ismod     = (int) ($loguser['powerlevel'] >= 3);
+	$isadmin   = (int) ($loguser['powerlevel'] >= 4);
+	$sysadmin  = (int) ($loguser['powerlevel'] >= 5);
 	
 	
 	$isfullmod = $ismod;
@@ -383,7 +384,7 @@
 	
 	if($loguser['id']) {
 			
-		if ($loguser['powerlevel'] <= 5 && !IS_AJAX_REQUEST) {
+		if ($loguser['powerlevel'] <= 6 && !IS_AJAX_REQUEST) {
 			
 			$influencelv = calclvl(calcexp($loguser['posts'], (ctime() - $loguser['regdate']) / 86400));
 
@@ -853,7 +854,7 @@ function doforumlist($id, $name = '', $shownone = ''){
 		
 		WHERE 	(c.minpower <= {$loguser['powerlevel']} OR !c.minpower)
 			AND (f.minpower <= {$loguser['powerlevel']} OR !f.minpower)
-			AND (!f.hidden OR {$loguser['powerlevel']} >= 4 OR $showhidden)
+			AND (!f.hidden OR {$loguser['powerlevel']} >= 5 OR $showhidden)
 			AND !ISNULL(c.id)
 			OR  f.id = $id
 			
@@ -1418,7 +1419,7 @@ function getnamecolor($sex, $powl, $namecolor = ''){
 	global $nmcol, $x_hacks;
 
 	// don't let powerlevels above admin have a blank color
-	$powl = min(3, $powl);
+	$powl = min(4, $powl);
 	
 	// Force rainbow effect on everybody
 	if ($x_hacks['rainbownames']) $namecolor = 'rnbow';
