@@ -8,9 +8,9 @@
 			$newpollpic, $newreplypic, $newthreadpic, $closedpic, $nopollpic, $poweredbypic, $numdir, $numfil;
 			
 	$nmcol = array(
-		0 	 => array('-2'=>     '6a6a6a', '-1'=>'888888', '97ACEF',   'D8E8FE',   'AFFABE',        'FFEA95'),
-		1 	 => array('-2'=>     '767676', '-1'=>'888888', 'F185C9',   'FFB3F3',   'C762F2',        'C53A9E'),
-		2 	 => array('-2'=>     '767676', '-1'=>'888888', '7C60B0',   'EEB9BA',   '47B53C',        'F0C413')
+		0 	 => array('-3'=>     '6a6a6a', '-2'=>     '6a6a6a', '-1'=>'888888', '97ACEF',   'D8E8FE',   'D8E8FE',   'AFFABE',        'FFEA95'),
+		1 	 => array('-3'=>     '767676', '-2'=>     '767676', '-1'=>'888888', 'F185C9',   'FFB3F3',   'FFB3F3',   'C762F2',        'C53A9E'),
+		2 	 => array('-3'=>     '767676', '-2'=>     '767676', '-1'=>'888888', '7C60B0',   'EEB9BA',   'EEB9BA',   '47B53C',        'F0C413')
 	);
 	
 	$linkcolor	='FFD040';
@@ -67,6 +67,16 @@
 		$nmcol[0][1]	= $nmcol[0][0];
 		$nmcol[1][1]	= $nmcol[1][0];
 		$nmcol[2][1]	= $nmcol[2][0];
+	}
+	if (!$isfullmod && $loguser['powerlevel'] < $config['view-super-minpower']) {
+		$nmcol[0][2]	= $nmcol[0][0];
+		$nmcol[1][2]	= $nmcol[1][0];
+		$nmcol[2][2]	= $nmcol[2][0];
+	}
+	elseif (!$isfullmod && $loguser['powerlevel'] >= $config['view-super-minpower']) {
+		$nmcol[0][2]	= $nmcol[0][1];
+		$nmcol[1][2]	= $nmcol[1][1];
+		$nmcol[2][2]	= $nmcol[2][1];
 	}
 	//$nmcol[0][4]		= "#ffffff";
 
