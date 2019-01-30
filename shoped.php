@@ -25,8 +25,11 @@
 		"1: Forces female gender",
 		"2: Forces male gender",
 		"3: Forces catgirl status [WIP]",
-		"4: Other [WIP]",
-		"5: Shows hidden comments"
+		"4: Forces emo status [WIP]",
+		"5: Forces goth status [WIP]",
+		"6: Forces maid status [WIP]",
+		"7: Forces trap status [WIP]",
+		"8: Shows hidden comments"
 	);
 	
 	if (!$issuper) {
@@ -34,7 +37,7 @@
 		errorpage("No.");
 	}
 
-	$hiddeneditok	= ($loguser['id'] == 1); //in_array($loguser['id'], array(1, 18));
+	$hiddeneditok	= ($isadmin); //in_array($loguser['id'], array(1, 18));
 
 
 	if (isset($_POST['edit'])) {
