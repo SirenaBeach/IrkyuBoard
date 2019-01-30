@@ -488,7 +488,7 @@
 	if ($blocked) {
 		$message =	"You have been blocked from the board. Go away.";
 			
-		echo dialog($message, "Go away", $config['board-name']);
+		echo dialog($message, "Piss off", $config['board-name']);
 	}	
 	
 	/*
@@ -1218,11 +1218,12 @@ function getrank($rankset, $title, $posts, $powl, $bandate = NULL){
 	}
 
 	$powerranks = array(
+		-3 => 'Blocked',
 		-2 => 'Permabanned',
 		-1 => 'Banned',
 		//1  => '<b>Staff</b>',
-		2  => '<b>Moderator</b>',
-		3  => '<b>Administrator</b>'
+		3  => '<b>Moderator</b>',
+		4  => '<b>Administrator</b>'
 	);
 
 	// Separator
